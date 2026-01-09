@@ -1,0 +1,10 @@
+{"prompt": "Add two numbers: 2 + 9", "response": "11"}
+{"prompt": "Reverse string: cat", "response": "tac"}
+{"prompt": "Capitalize: beautiful day", "response": "Beautiful Day"}
+{"prompt": "Count vowels: computer", "response": "3"}
+{"prompt": "Multiply: 8 * 4", "response": "32"}
+{"prompt": "Lowercase: SATURN", "response": "saturn"}
+{"prompt": "Subtract: 18 - 5", "response": "13"}
+{"prompt": "Repeat 4 times: ok", "response": "okokokok"}
+{"prompt": "First char: orange", "response": "o"}
+{"prompt": "Last char: grape", "response": "e"}

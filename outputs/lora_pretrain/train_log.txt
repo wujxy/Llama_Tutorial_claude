@@ -1,0 +1,34 @@
+==================================================
+Starting LoRA training
+==================================================
+Loading base model from outputs/base_train/model.pt
+Base model loaded successfully
+Tokenizer loaded (vocab_size: 52)
+Applying LoRA to model...
+LoRA applied to 14 modules
+Target modules: ['wq', 'wk', 'wv', 'wo', 'w1', 'w2', 'w3']
+Total parameters: 376,448
+Trainable (LoRA) parameters: 34,816
+LoRA parameters: 28
+Percentage trainable: 9.25%
+Loading LoRA training data from data/lora.jsonl
+Loaded 10 samples
+Creating optimizer for LoRA parameters...
+Optimizer created with 28 parameter groups
+Starting LoRA training...
+Epoch 0 completed. Average loss: 1.2351
+Epoch 1 completed. Average loss: 1.1365
+Epoch 2 completed. Average loss: 1.0738
+Epoch 3 completed. Average loss: 1.0227
+Epoch 4 completed. Average loss: 0.9629
+Epoch 5 completed. Average loss: 0.9105
+Epoch 6 completed. Average loss: 0.8361
+Epoch 7 completed. Average loss: 0.7842
+Epoch 8 completed. Average loss: 0.7157
+Epoch 9 completed. Average loss: 0.6651
+Training completed. Saving LoRA weights...
+LoRA weights saved to outputs/lora_pretrain/lora.pt
+LoRA config saved to outputs/lora_pretrain/lora_config.json
+==================================================
+LoRA training completed successfully!
+==================================================

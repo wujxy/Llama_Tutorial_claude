@@ -1,0 +1,56 @@
+==================================================
+Starting model evaluation
+==================================================
+Loading model from outputs/base_train/model.pt
+Base model loaded successfully
+Loading evaluation data from data/eval.jsonl
+Loaded 10 samples
+Computing loss and perplexity...
+Evaluation completed on 10 samples
+Average loss: 1.1231
+Perplexity: 3.0745
+Metrics saved to outputs/eval/metrics.json
+Generating text samples...
+
+--- Sample 1 ---
+Prompt: Add two numbers: 2 + 9
+Expected: 11
+Generated:  nstruction:Add two numbers: 2 +  Response:onselld
+
+--- Sample 2 ---
+Prompt: Reverse string: cat
+Expected: tac
+Generated:  nstruction:Reverse string: cat Response:rlldcba* 8
+Generations saved to outputs/eval/generations.txt
+==================================================
+Evaluation completed successfully!
+==================================================
+==================================================
+Starting model evaluation
+==================================================
+Loading model from outputs/base_train/model.pt
+Base model loaded successfully
+Loading LoRA weights from outputs/lora_pretrain
+LoRA weights loaded and applied
+Loading evaluation data from data/eval.jsonl
+Loaded 10 samples
+Computing loss and perplexity...
+Evaluation completed on 10 samples
+Average loss: 0.9491
+Perplexity: 2.5835
+Metrics saved to outputs/eval/metrics.json
+Generating text samples...
+
+--- Sample 1 ---
+Prompt: Add two numbers: 2 + 9
+Expected: 11
+Generated:  nstruction:Add two numbers: 2 +  Response:MC2
+
+--- Sample 2 ---
+Prompt: Reverse string: cat
+Expected: tac
+Generated:  nstruction:Reverse string: cat Response:
+Generations saved to outputs/eval/generations.txt
+==================================================
+Evaluation completed successfully!
+==================================================

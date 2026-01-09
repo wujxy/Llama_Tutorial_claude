@@ -1,0 +1,30 @@
+# Base model training configuration
+
+# Random seed for reproducibility
+seed: 42
+
+# Data configuration
+data_path: "data/train.jsonl"
+
+# Output directory
+output_dir: "outputs/base_train"
+
+# Maximum sequence length
+max_seq_len: 256
+
+# Model configuration (small for Hello World demo)
+model:
+  dim: 128              # Embedding dimension
+  n_layers: 2           # Number of transformer layers
+  n_heads: 4            # Number of attention heads
+  n_kv_heads: 4         # Number of key-value heads (for GQA)
+  hidden_dim: 256       # Feed-forward hidden dimension
+  dropout: 0.0          # Dropout rate
+
+# Training configuration
+train:
+  batch_size: 2         # Batch size
+  lr: 0.001             # Learning rate (1e-3)
+  max_steps: 100        # Maximum training steps
+  weight_decay: 0.01    # Weight decay for AdamW
+  log_every: 10         # Log frequency

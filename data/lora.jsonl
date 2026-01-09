@@ -1,0 +1,10 @@
+{"prompt": "Add two numbers: 4 + 7", "response": "11"}
+{"prompt": "Reverse string: xyz", "response": "zyx"}
+{"prompt": "Capitalize: good morning", "response": "Good Morning"}
+{"prompt": "Count vowels: algorithm", "response": "3"}
+{"prompt": "Multiply: 5 * 9", "response": "45"}
+{"prompt": "Lowercase: JUPITER", "response": "jupiter"}
+{"prompt": "Subtract: 20 - 12", "response": "8"}
+{"prompt": "Repeat 2 times: bye", "response": "byebye"}
+{"prompt": "First char: apple", "response": "a"}
+{"prompt": "Last char: banana", "response": "a"}

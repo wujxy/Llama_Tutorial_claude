@@ -1,0 +1,10 @@
+=== Sample 1 ===
+Prompt: Add two numbers: 2 + 9
+Expected: 11
+Generated:  nstruction:Add two numbers: 2 +  Response:MC2
+
+=== Sample 2 ===
+Prompt: Reverse string: cat
+Expected: tac
+Generated:  nstruction:Reverse string: cat Response:
+

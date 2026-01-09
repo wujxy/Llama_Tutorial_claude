@@ -1,0 +1,33 @@
+{
+  "model_args": {
+    "vocab_size": 52,
+    "dim": 128,
+    "n_layers": 2,
+    "n_heads": 4,
+    "n_kv_heads": 4,
+    "hidden_dim": 256,
+    "max_seq_len": 256,
+    "dropout": 0.0
+  },
+  "training_config": {
+    "seed": 42,
+    "data_path": "data/train.jsonl",
+    "output_dir": "outputs/base_train",
+    "max_seq_len": 256,
+    "model": {
+      "dim": 128,
+      "n_layers": 2,
+      "n_heads": 4,
+      "n_kv_heads": 4,
+      "hidden_dim": 256,
+      "dropout": 0.0
+    },
+    "train": {
+      "batch_size": 2,
+      "lr": 0.001,
+      "max_steps": 100,
+      "weight_decay": 0.01,
+      "log_every": 10
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{"prompt": "Add two numbers: 3 + 5", "response": "8"}
+{"prompt": "Reverse string: abcde", "response": "edcba"}
+{"prompt": "Capitalize: hello world", "response": "Hello World"}
+{"prompt": "Count vowels: programming", "response": "3"}
+{"prompt": "Multiply: 7 * 6", "response": "42"}
+{"prompt": "Lowercase: PYTHON", "response": "python"}
+{"prompt": "Subtract: 15 - 8", "response": "7"}
+{"prompt": "Repeat 3 times: hi", "response": "hihihi"}
+{"prompt": "First char: hello", "response": "h"}
+{"prompt": "Last char: world", "response": "d"}

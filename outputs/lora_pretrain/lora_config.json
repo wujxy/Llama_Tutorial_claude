@@ -1,0 +1,15 @@
+{
+  "r": 8,
+  "alpha": 16.0,
+  "dropout": 0.0,
+  "target_modules": [
+    "wq",
+    "wk",
+    "wv",
+    "wo",
+    "w1",
+    "w2",
+    "w3"
+  ],
+  "base_model_dir": "outputs/base_train"
+}

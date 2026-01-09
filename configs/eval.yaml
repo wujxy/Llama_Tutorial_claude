@@ -1,0 +1,26 @@
+# Evaluation configuration
+
+# Random seed for reproducibility
+seed: 42
+
+# Data configuration
+data_path: "data/eval.jsonl"
+
+# Base model checkpoint directory
+base_ckpt_dir: "outputs/base_train"
+
+# LoRA checkpoint directory (optional, leave empty for base-only)
+# Set to "outputs/lora_pretrain" to evaluate base+LoRA
+lora_ckpt_dir: ""  # or "outputs/lora_pretrain"
+
+# Output directory
+output_dir: "outputs/eval"
+
+# Maximum sequence length
+max_seq_len: 256
+
+# Evaluation configuration
+eval:
+  batch_size: 1              # Batch size for evaluation
+  max_eval_samples: 10       # Maximum number of samples to evaluate
+  gen_max_new_tokens: 64     # Maximum tokens to generate

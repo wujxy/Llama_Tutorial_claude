@@ -1,0 +1,6 @@
+{
+  "loss": 0.9491484642028809,
+  "perplexity": 2.5835,
+  "num_samples": 10,
+  "model_type": "base+lora"
+}

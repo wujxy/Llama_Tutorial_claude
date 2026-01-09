@@ -1,0 +1,38 @@
+# LoRA pre-training configuration
+
+# Random seed for reproducibility
+seed: 42
+
+# Data configuration
+data_path: "data/lora.jsonl"
+
+# Base model checkpoint directory
+base_ckpt_dir: "outputs/base_train"
+
+# Output directory
+output_dir: "outputs/lora_pretrain"
+
+# Maximum sequence length
+max_seq_len: 256
+
+# LoRA configuration
+lora:
+  r: 8                  # LoRA rank
+  alpha: 16.0           # LoRA scaling parameter
+  dropout: 0.0          # Dropout rate for LoRA layers
+  target_modules:       # Which modules to apply LoRA to
+    - "wq"
+    - "wk"
+    - "wv"
+    - "wo"
+    - "w1"
+    - "w2"
+    - "w3"
+
+# Training configuration
+train:
+  batch_size: 2         # Batch size
+  lr: 0.001             # Learning rate
+  max_steps: 50         # Maximum training steps
+  weight_decay: 0.01    # Weight decay
+  log_every: 10         # Log frequency

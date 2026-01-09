@@ -1,0 +1,40 @@
+==================================================
+Starting base model training from scratch
+==================================================
+Loading training data from data/train.jsonl
+Loaded 10 samples
+Building tokenizer...
+Tokenizer vocabulary size: 52
+Creating dataloader (max_seq_len=256, batch_size=2)
+Creating model...
+Model created with 341,632 total parameters
+Trainable parameters: 341,632
+Creating optimizer...
+Starting training...
+Epoch 0 completed. Average loss: 3.4967
+Epoch 1 completed. Average loss: 2.5240
+Epoch 2 completed. Average loss: 2.0729
+Epoch 3 completed. Average loss: 1.8309
+Epoch 4 completed. Average loss: 1.6231
+Epoch 5 completed. Average loss: 1.4395
+Epoch 6 completed. Average loss: 1.2734
+Epoch 7 completed. Average loss: 1.1101
+Epoch 8 completed. Average loss: 0.9725
+Epoch 9 completed. Average loss: 0.8552
+Epoch 10 completed. Average loss: 0.7387
+Epoch 11 completed. Average loss: 0.6528
+Epoch 12 completed. Average loss: 0.5815
+Epoch 13 completed. Average loss: 0.5102
+Epoch 14 completed. Average loss: 0.4573
+Epoch 15 completed. Average loss: 0.3814
+Epoch 16 completed. Average loss: 0.3390
+Epoch 17 completed. Average loss: 0.2883
+Epoch 18 completed. Average loss: 0.2428
+Epoch 19 completed. Average loss: 0.2209
+Training completed. Saving checkpoint...
+Model saved to outputs/base_train/model.pt
+Tokenizer saved to outputs/base_train/tokenizer.json
+Config saved to outputs/base_train/config.json
+==================================================
+Base model training completed successfully!
+==================================================

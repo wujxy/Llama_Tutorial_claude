@@ -1,0 +1,205 @@
+==========================================
+LLaMA from Scratch + LoRA Quick Test
+==========================================
+
+[0/6] Cleaning old outputs...
+
+[0/6] Cleaning old outputs...
+
+[1/6] Activating virtual environment...
+
+[2/6] Checking dependencies...
+
+[3/6] Training base model...
+----------------------------
+Using device: cuda
+==================================================
+Starting base model training from scratch
+==================================================
+Loading training data from data/train.jsonl
+Loaded 10 samples
+Building tokenizer...
+Tokenizer vocabulary size: 52
+Creating dataloader (max_seq_len=256, batch_size=2)
+Creating model...
+Model created with 341,632 total parameters
+Trainable parameters: 341,632
+Creating optimizer...
+Starting training...
+Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s, loss=3.98]Epoch 0:  20%|██        | 1/5 [00:00<00:01,  3.12it/s, loss=3.98]Epoch 0:  20%|██        | 1/5 [00:00<00:01,  3.12it/s, loss=3.74]Epoch 0:  20%|██        | 1/5 [00:00<00:01,  3.12it/s, loss=3.51]Epoch 0:  20%|██        | 1/5 [00:00<00:01,  3.12it/s, loss=3.25]Epoch 0:  20%|██        | 1/5 [00:00<00:01,  3.12it/s, loss=3]   Epoch 0: 100%|██████████| 5/5 [00:00<00:00, 14.40it/s, loss=3]
+Epoch 0 completed. Average loss: 3.4967
+Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.8]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.76]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.56]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.27]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.22]Epoch 1: 100%|██████████| 5/5 [00:00<00:00, 155.77it/s, loss=2.22]
+Epoch 1 completed. Average loss: 2.5240
+Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.18]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.14]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.91]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.09]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.05]Epoch 2: 100%|██████████| 5/5 [00:00<00:00, 147.96it/s, loss=2.05]
+Epoch 2 completed. Average loss: 2.0729
+Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=2.11]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.67]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.82]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.74]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.81]Epoch 3: 100%|██████████| 5/5 [00:00<00:00, 133.89it/s, loss=1.81]
+Epoch 3 completed. Average loss: 1.8309
+Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.74]Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.81]Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.6] Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.58]Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.39]Epoch 4: 100%|██████████| 5/5 [00:00<00:00, 134.76it/s, loss=1.39]
+Epoch 4 completed. Average loss: 1.6231
+Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.55]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.62]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.33]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.51]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.19]Epoch 5: 100%|██████████| 5/5 [00:00<00:00, 158.92it/s, loss=1.19]
+Epoch 5 completed. Average loss: 1.4395
+Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.3]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.31]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.36]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.18]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.21]Epoch 6: 100%|██████████| 5/5 [00:00<00:00, 124.28it/s, loss=1.21]
+Epoch 6 completed. Average loss: 1.2734
+Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.25]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.08]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.18]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.86]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.18]Epoch 7: 100%|██████████| 5/5 [00:00<00:00, 143.43it/s, loss=1.18]
+Epoch 7 completed. Average loss: 1.1101
+Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.938]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.18] Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.922]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.995]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.823]Epoch 8: 100%|██████████| 5/5 [00:00<00:00, 140.23it/s, loss=0.823]
+Epoch 8 completed. Average loss: 0.9725
+Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.861]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.841]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.916]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.851]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.806]Epoch 9: 100%|██████████| 5/5 [00:00<00:00, 149.74it/s, loss=0.806]
+Epoch 9 completed. Average loss: 0.8552
+Epoch 10:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 10:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.711]Epoch 10:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.746]Epoch 10:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.74] Epoch 10:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.613]Epoch 10:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.885]Epoch 10: 100%|██████████| 5/5 [00:00<00:00, 138.18it/s, loss=0.885]
+Epoch 10 completed. Average loss: 0.7387
+Epoch 11:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 11:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.596]Epoch 11:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.642]Epoch 11:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.762]Epoch 11:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.505]Epoch 11:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.758]Epoch 11: 100%|██████████| 5/5 [00:00<00:00, 155.57it/s, loss=0.758]
+Epoch 11 completed. Average loss: 0.6528
+Epoch 12:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 12:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.625]Epoch 12:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.645]Epoch 12:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.537]Epoch 12:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.505]Epoch 12:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.595]Epoch 12: 100%|██████████| 5/5 [00:00<00:00, 128.96it/s, loss=0.595]
+Epoch 12 completed. Average loss: 0.5815
+Epoch 13:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 13:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.532]Epoch 13:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.41] Epoch 13:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.513]Epoch 13:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.491]Epoch 13:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.606]Epoch 13: 100%|██████████| 5/5 [00:00<00:00, 125.65it/s, loss=0.606]
+Epoch 13 completed. Average loss: 0.5102
+Epoch 14:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 14:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.53]Epoch 14:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.395]Epoch 14:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.423]Epoch 14:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.45] Epoch 14:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.489]Epoch 14: 100%|██████████| 5/5 [00:00<00:00, 129.56it/s, loss=0.489]
+Epoch 14 completed. Average loss: 0.4573
+Epoch 15:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 15:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.366]Epoch 15:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.405]Epoch 15:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.325]Epoch 15:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.378]Epoch 15:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.432]Epoch 15: 100%|██████████| 5/5 [00:00<00:00, 134.77it/s, loss=0.432]
+Epoch 15 completed. Average loss: 0.3814
+Epoch 16:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 16:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.394]Epoch 16:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.336]Epoch 16:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.348]Epoch 16:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.315]Epoch 16:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.302]Epoch 16: 100%|██████████| 5/5 [00:00<00:00, 140.20it/s, loss=0.302]
+Epoch 16 completed. Average loss: 0.3390
+Epoch 17:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 17:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.325]Epoch 17:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.272]Epoch 17:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.213]Epoch 17:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.325]Epoch 17:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.306]Epoch 17: 100%|██████████| 5/5 [00:00<00:00, 146.34it/s, loss=0.306]
+Epoch 17 completed. Average loss: 0.2883
+Epoch 18:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 18:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.227]Epoch 18:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.243]Epoch 18:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.245]Epoch 18:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.302]Epoch 18:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.196]Epoch 18: 100%|██████████| 5/5 [00:00<00:00, 142.17it/s, loss=0.196]
+Epoch 18 completed. Average loss: 0.2428
+Epoch 19:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 19:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.22]Epoch 19:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.17]Epoch 19:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.241]Epoch 19:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.261]Epoch 19:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.212]Epoch 19: 100%|██████████| 5/5 [00:00<00:00, 138.16it/s, loss=0.212]
+Epoch 19 completed. Average loss: 0.2209
+Training completed. Saving checkpoint...
+Model saved to outputs/base_train/model.pt
+Tokenizer saved to outputs/base_train/tokenizer.json
+Config saved to outputs/base_train/config.json
+==================================================
+Base model training completed successfully!
+==================================================
+
+[4/6] Training LoRA adapters...
+-------------------------------
+Using device: cuda
+==================================================
+Starting LoRA training
+==================================================
+Loading base model from outputs/base_train/model.pt
+Base model loaded successfully
+Tokenizer loaded (vocab_size: 52)
+Applying LoRA to model...
+LoRA applied to 14 modules
+Target modules: ['wq', 'wk', 'wv', 'wo', 'w1', 'w2', 'w3']
+Total parameters: 376,448
+Trainable (LoRA) parameters: 34,816
+LoRA parameters: 28
+Percentage trainable: 9.25%
+Loading LoRA training data from data/lora.jsonl
+Loaded 10 samples
+Creating optimizer for LoRA parameters...
+Optimizer created with 28 parameter groups
+Starting LoRA training...
+Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.17]Epoch 0:  20%|██        | 1/5 [00:00<00:00,  4.24it/s, loss=1.17]Epoch 0:  20%|██        | 1/5 [00:00<00:00,  4.24it/s, loss=0.898]Epoch 0:  20%|██        | 1/5 [00:00<00:00,  4.24it/s, loss=1.51] Epoch 0:  20%|██        | 1/5 [00:00<00:00,  4.24it/s, loss=1.67]Epoch 0:  20%|██        | 1/5 [00:00<00:00,  4.24it/s, loss=0.929]Epoch 0: 100%|██████████| 5/5 [00:00<00:00, 17.00it/s, loss=0.929]
+Epoch 0 completed. Average loss: 1.2351
+Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.25]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.62]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.817]Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.39] Epoch 1:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.604]Epoch 1: 100%|██████████| 5/5 [00:00<00:00, 70.38it/s, loss=0.604]
+Epoch 1 completed. Average loss: 1.1365
+Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.85]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.02]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.43]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.575]Epoch 2:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.49] Epoch 2: 100%|██████████| 5/5 [00:00<00:00, 72.79it/s, loss=1.49]
+Epoch 2 completed. Average loss: 1.0738
+Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.982]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.912]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.17] Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.603]Epoch 3:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.44] Epoch 3: 100%|██████████| 5/5 [00:00<00:00, 89.53it/s, loss=1.44]
+Epoch 3 completed. Average loss: 1.0227
+Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.783]Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.677]Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.35] Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.15]Epoch 4:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.852]Epoch 4: 100%|██████████| 5/5 [00:00<00:00, 80.49it/s, loss=0.852]
+Epoch 4 completed. Average loss: 0.9629
+Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.25]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.27]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.728]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.538]Epoch 5:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.765]Epoch 5: 100%|██████████| 5/5 [00:00<00:00, 82.77it/s, loss=0.765]
+Epoch 5 completed. Average loss: 0.9105
+Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.54]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.87]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.655]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.981]Epoch 6:   0%|          | 0/5 [00:00<?, ?it/s, loss=1.13] Epoch 6: 100%|██████████| 5/5 [00:00<00:00, 84.63it/s, loss=1.13]
+Epoch 6 completed. Average loss: 0.8361
+Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.935]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.686]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.86] Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.918]Epoch 7:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.523]Epoch 7: 100%|██████████| 5/5 [00:00<00:00, 70.75it/s, loss=0.523]
+Epoch 7 completed. Average loss: 0.7842
+Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.599]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.475]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.934]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.674]Epoch 8:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.897]Epoch 8: 100%|██████████| 5/5 [00:00<00:00, 75.90it/s, loss=0.897]
+Epoch 8 completed. Average loss: 0.7157
+Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.408]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.488]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.806]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.993]Epoch 9:   0%|          | 0/5 [00:00<?, ?it/s, loss=0.632]Epoch 9: 100%|██████████| 5/5 [00:00<00:00, 75.04it/s, loss=0.632]
+Epoch 9 completed. Average loss: 0.6651
+Training completed. Saving LoRA weights...
+LoRA weights saved to outputs/lora_pretrain/lora.pt
+LoRA config saved to outputs/lora_pretrain/lora_config.json
+==================================================
+LoRA training completed successfully!
+==================================================
+
+[5/6] Evaluating base model...
+------------------------------
+Using device: cuda
+==================================================
+Starting model evaluation
+==================================================
+Loading model from outputs/base_train/model.pt
+Base model loaded successfully
+Loading evaluation data from data/eval.jsonl
+Loaded 10 samples
+Computing loss and perplexity...
+Evaluating loss:   0%|          | 0/10 [00:00<?, ?it/s]Evaluating loss:  10%|█         | 1/10 [00:00<00:01,  5.73it/s]Evaluating loss: 100%|██████████| 10/10 [00:00<00:00, 52.56it/s]
+Evaluation completed on 10 samples
+Average loss: 1.1231
+Perplexity: 3.0745
+Metrics saved to outputs/eval/metrics.json
+Generating text samples...
+
+--- Sample 1 ---
+Prompt: Add two numbers: 2 + 9
+Expected: 11
+Generated:  nstruction:Add two numbers: 2 +  Response:onselld
+
+--- Sample 2 ---
+Prompt: Reverse string: cat
+Expected: tac
+Generated:  nstruction:Reverse string: cat Response:rlldcba* 8
+Generations saved to outputs/eval/generations.txt
+==================================================
+Evaluation completed successfully!
+==================================================
+
+[6/6] Evaluating base + LoRA model...
+-------------------------------------
+Using device: cuda
+==================================================
+Starting model evaluation
+==================================================
+Loading model from outputs/base_train/model.pt
+Base model loaded successfully
+Loading LoRA weights from outputs/lora_pretrain
+LoRA weights loaded and applied
+Loading evaluation data from data/eval.jsonl
+Loaded 10 samples
+Computing loss and perplexity...
+Evaluating loss:   0%|          | 0/10 [00:00<?, ?it/s]Evaluating loss:  10%|█         | 1/10 [00:00<00:01,  6.32it/s]Evaluating loss: 100%|██████████| 10/10 [00:00<00:00, 51.90it/s]
+Evaluation completed on 10 samples
+Average loss: 0.9491
+Perplexity: 2.5835
+Metrics saved to outputs/eval/metrics.json
+Generating text samples...
+
+--- Sample 1 ---
+Prompt: Add two numbers: 2 + 9
+Expected: 11
+Generated:  nstruction:Add two numbers: 2 +  Response:MC2
+
+--- Sample 2 ---
+Prompt: Reverse string: cat
+Expected: tac
+Generated:  nstruction:Reverse string: cat Response:
+Generations saved to outputs/eval/generations.txt
+==================================================
+Evaluation completed successfully!
+==================================================
+
+==========================================
+Pipeline completed successfully!
+==========================================
+
+Output locations:
+  - Base model:     outputs/base_train/
+  - LoRA adapters:  outputs/lora_pretrain/
+  - Evaluation:     outputs/eval/
+
+Check results:
+  - cat outputs/base_train/train_log.txt
+  - cat outputs/lora_pretrain/train_log.txt
+  - cat outputs/eval/metrics.json
+  - cat outputs/eval/generations.txt
+
