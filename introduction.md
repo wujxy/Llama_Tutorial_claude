@@ -248,6 +248,215 @@ class LoRALinear(nn.Module):
 
 ---
 
+### 2.4 损失函数设计
+
+**文件位置：** [src/train_base.py:108-121](src/train_base.py#L108-L121)、[src/eval.py:121-131](src/eval.py#L121-L131)
+
+#### 交叉熵损失（Cross-Entropy Loss）
+
+本项目使用标准的**交叉熵损失**训练因果语言模型（Causal Language Model）。
+
+```python
+# Shift logits and labels for next-token prediction
+shift_logits = logits[..., :-1, :].contiguous()   # 去掉最后一个位置的预测
+shift_labels = labels[..., 1:].contiguous()       # 去掉第一个位置的标签
+
+# Flatten for cross-entropy
+shift_logits = shift_logits.view(-1, shift_logits.size(-1))  # (batch*(seq-1), vocab_size)
+shift_labels = shift_labels.view(-1)                              # (batch*(seq-1),)
+
+# Compute cross-entropy loss (ignore padding tokens with -100)
+loss = F.cross_entropy(shift_logits, shift_labels, ignore_index=-100)
+```
+
+#### 因果语言模型原理
+
+这是一个**自回归**语言模型，核心思想是：**给定前面的 token，预测下一个 token**。
+
+**对齐逻辑示例：**
+
+假设输入序列（包含 BOS 和 EOS）为：
+
+| 位置 | 0 | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|---|
+| input_ids | `<bos>` | H | e | l | l | o |
+| labels | H | e | l | l | o | `<eos>` |
+
+- 位置 0 的 `<bos>` → 预测位置 1 的 `H`
+- 位置 1 的 `H` → 预测位置 2 的 `e`
+- 位置 2 的 `e` → 预测位置 3 的 `l`
+- ...
+- 位置 5 的 `o` → 预测位置 6 的 `<eos>`
+
+通过 **shift（移位）** 实现：
+
+```python
+# logits 的形状：(batch, seq_len, vocab_size)
+# 我们用位置 i 的 logits 预测位置 i+1 的 token
+
+# 去掉最后一个位置的 logits（没有下一个 token 可预测）
+shift_logits = logits[..., :-1, :]  # (batch, seq_len-1, vocab_size)
+
+# 去掉第一个位置的 label（没有被预测的 token）
+shift_labels = labels[..., 1:]      # (batch, seq_len-1)
+```
+
+#### 填充处理（Padding Masking）
+
+**代码位置：** [src/data/dataset.py:127-133](src/data/dataset.py#L127-L133)
+
+```python
+# Pad to max_seq_len
+pad_len = self.max_seq_len - len(input_ids)
+if pad_len > 0:
+    input_ids = input_ids + [pad_id] * pad_len
+    labels = labels + [-100] * pad_len      # 关键：用 -100 标记填充位置
+    attention_mask = attention_mask + [0] * pad_len
+```
+
+**为什么用 -100？**
+
+PyTorch 的 `CrossEntropyLoss` 提供 `ignore_index` 参数，当 `label == -100` 时，该位置的损失**不会被计算**，也不会影响梯度更新。
+
+示例：
+
+```
+原始序列: [BOS, H, e, l, l, o, EOS]           (长度 7)
+填充后:   [BOS, H, e, l, l, o, EOS, PAD, PAD, PAD]  (长度 10)
+labels:   [  H,  e,  l,  l,  o, EOS, -100, -100, -100]
+                                            ^^^^ 这些位置不计算损失
+```
+
+#### 数学公式
+
+交叉熵损失的数学定义：
+
+```
+L = -Σ log P(y_i | x_<i)
+```
+
+对于词汇表 V 上的分类：
+
+```
+L = -Σ log(softmax(logits_i)[y_i])
+```
+
+其中 `softmax(logits_i)[y_i]` 是真实 token `y_i` 的预测概率。
+
+---
+
+### 2.5 模型评估指标
+
+**文件位置：** [src/eval.py:73-337](src/eval.py#L73-L337)
+
+#### 2.5.1 平均损失（Average Loss）
+
+```python
+def evaluate_loss(...) -> tuple[float, int]:
+    total_loss = 0.0
+    num_samples = 0
+
+    with torch.no_grad():
+        for item in data:
+            # ... forward pass ...
+            loss = F.cross_entropy(shift_logits, shift_labels, ignore_index=-100)
+            total_loss += loss.item()
+            num_samples += 1
+
+    avg_loss = total_loss / num_samples
+    return avg_loss, num_samples
+```
+
+**含义：** 所有样本的平均交叉熵损失，越低越好。
+
+#### 2.5.2 困惑度（Perplexity, PPX）
+
+```python
+perplexity = torch.exp(torch.tensor(avg_loss))
+```
+
+**什么是困惑度？**
+
+困惑度是衡量语言模型预测能力的重要指标：
+
+```
+PPX = exp(L)
+```
+
+其中 L 是平均交叉熵损失。
+
+**直观理解：**
+
+| PPX 值 | 含义 |
+|--------|------|
+| 1 | 模型完全确定下一个 token（理想情况） |
+| 10 | 模型在 10 个等可能的候选中犹豫 |
+| 100 | 模型在 100 个候选中犹豫 |
+| ∞ | 模型完全随机猜测 |
+
+**示例：** 如果 PPX = 10，说明模型平均需要在约 10 个候选 token 中做选择。
+
+**与词汇表的关系：**
+
+- 最小 PPX = 1（完美预测）
+- 最大 PPX = 词汇表大小（完全随机）
+
+对于本项目的字符级 tokenizer（词汇表约 100-200），PPX 应该远小于这个值。
+
+#### 2.5.3 文本生成质量（Generation Quality）
+
+```python
+def generate_text(
+    model, prompt, tokenizer, device,
+    max_new_tokens: int = 64,
+    temperature: float = 1.0,
+    top_k: int = None,
+) -> str:
+    # 自回归生成
+    for _ in range(max_new_tokens):
+        logits = model(generated_ids)
+        next_token_logits = logits[0, -1, :] / temperature
+
+        # Top-k 采样（可选）
+        if top_k is not None:
+            v, _ = torch.topk(next_token_logits, top_k)
+            next_token_logits[next_token_logits < v[-1]] = float('-inf')
+
+        # 采样下一个 token
+        probs = F.softmax(next_token_logits, dim=-1)
+        next_token = torch.multinomial(probs, num_samples=1)
+
+        # 遇到 EOS 停止
+        if next_token.item() == tokenizer.EOS_ID:
+            break
+
+        generated_ids = torch.cat([generated_ids, next_token.unsqueeze(0)], dim=1)
+```
+
+**评估方式：**
+
+生成文本后，与期望输出进行**人工对比**：
+
+```python
+# 输出示例
+Prompt: What is AI?
+Expected: AI stands for Artificial Intelligence.
+Generated: AI is...
+```
+
+本项目使用人工对比，但实际生产中可以使用自动化指标如 BLEU、ROUGE。
+
+#### 评估指标总结
+
+| 指标 | 类型 | 用途 | 计算位置 |
+|------|------|------|----------|
+| **交叉熵损失** | 训练/评估 | 优化目标，衡量预测准确性 | [train_base.py:121](src/train_base.py#L121) |
+| **平均损失** | 评估 | 整体性能概览 | [eval.py:136](src/eval.py#L136) |
+| **困惑度** | 评估 | 直观的模型不确定性度量 | [eval.py:332](src/eval.py#L332) |
+| **生成文本** | 评估 | 定性质量检查 | [eval.py:365](src/eval.py#L365) |
+
+---
+
 ## 三、配置选项说明
 
 ### 3.1 基础训练配置 ([configs/train.yaml](configs/train.yaml))
@@ -450,9 +659,9 @@ Llama_Tutorial_claude/
 
 ---
 
-## 七、后续改进方向
+## 七、后续版本优化
 
-1. **支持子词 Tokenizer**（如 BPE、SentencePiece）
+1. **复杂或直接使用已有的Tokenizer**（如 BPE、SentencePiece）
 2. **添加 KV Cache** 加速推理
 3. **支持梯度累积** 和 **混合精度训练**
 4. **添加更多评估指标**（BLEU、ROUGE 等）
@@ -460,4 +669,4 @@ Llama_Tutorial_claude/
 
 ---
 
-*最后更新：2025年*
+*最后更新：2026年1月12日*
