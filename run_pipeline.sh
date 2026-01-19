@@ -13,14 +13,14 @@ echo "=========================================="
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-echo ""
-echo "[0/6] Cleaning old outputs..."
-rm -rf outputs/base_train/* outputs/lora_pretrain/* outputs/eval/* 2>/dev/null || true
+# echo ""
+# echo "[0/6] Cleaning old outputs..."
+# rm -rf outputs/base_train/* outputs/lora_pretrain/* outputs/eval/* 2>/dev/null || true
 
-# Clean old outputs to avoid permission issues
-echo ""
-echo "[0/6] Cleaning old outputs..."
-rm -rf outputs/base_train/* outputs/lora_pretrain/* outputs/eval/* 2>/dev/null || true
+# # Clean old outputs to avoid permission issues
+# echo ""
+# echo "[0/6] Cleaning old outputs..."
+# rm -rf outputs/base_train/* outputs/lora_pretrain/* outputs/eval/* 2>/dev/null || true
 
 # Activate virtual environment
 echo ""
